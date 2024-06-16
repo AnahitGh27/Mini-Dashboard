@@ -1,0 +1,42 @@
+.select {
+  position: relative;
+  font-size: 1.8rem;
+  background-color: var(--white-color);
+  border-radius: 0.6rem;
+}
+
+.selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--grey2-color);
+  border-radius: 0.6rem;
+}
+
+.select-dropdown {
+  width: 100%;
+  position: absolute;
+  top: 4.2rem;
+  left: 0;
+  z-index: 1;
+  list-style: none;
+  border: 1px solid var(--grey2-color);
+  border-radius: 0.6rem;
+  padding: 1.5rem 0rem;
+  background-color: var(--white-color);
+}
+
+.hidden {
+  display: none;
+}
+
+.select-item {
+  padding: 1.4rem 1rem;
+  border-radius: 1rem;
+}
+
+.select-item:hover {
+  background-color: var(--grey2-color);
+}
