@@ -35,3 +35,29 @@ export const getStudents = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const searchStudents = async (req, res) => {
+  const { firstName, fullName } = req.query;
+  const query = {};
+
+  if (firstName) {
+    query.firstName = { $regex: new RegExp(firstName, "i") };
+  }
+
+  if (fullName) {
+    const [first, last] = fullName.split(" ");
+    query.firstName = { $regex: new RegExp(first, "i") };
+    query.lastName = { $regex: new RegExp(last, "i") };
+  }
+
+  try {
+    const students = await Student.find(query)
+      .select("firstName lastName email createdAt")
+      .lean()
+      .exec();
+
+    res.status(200).json(students);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

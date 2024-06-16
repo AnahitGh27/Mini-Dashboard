@@ -9,6 +9,7 @@ const CustomInput = ({
   value,
   className,
   onChange,
+  onKeyDown,
   required,
 }) => {
   const cssClass = `${classes["input-wrapper"]} ${className ? className : ""}`;
@@ -24,6 +25,7 @@ const CustomInput = ({
         value={value}
         name={name}
         onChange={onChange}
+        onKeyDown={onKeyDown}
         required={required}
       />
     </div>
@@ -33,12 +35,13 @@ const CustomInput = ({
 CustomInput.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string,
   value: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.element,
   onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
   required: PropTypes.bool,
 };
 
