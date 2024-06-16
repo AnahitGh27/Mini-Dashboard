@@ -43,3 +43,7 @@ a:link,
 a:visited {
   text-decoration: none;
 }
+
+.container {
+  margin: 0 auto;
+}

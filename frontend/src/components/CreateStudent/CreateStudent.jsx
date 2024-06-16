@@ -76,7 +76,6 @@ const CreateStudent = () => {
         id="email"
         label="Email:"
         type="email"
-        placeholder="Email"
         value={formData.email}
         onChange={handleChange}
         required
@@ -85,7 +84,6 @@ const CreateStudent = () => {
         id="password"
         label="Password:"
         type="password"
-        placeholder="Password"
         value={formData.password}
         onChange={handleChange}
         required
@@ -94,7 +92,6 @@ const CreateStudent = () => {
         id="firstName"
         label="First Name:"
         type="text"
-        placeholder="First Name"
         value={formData.firstName}
         onChange={handleChange}
         required
@@ -103,7 +100,6 @@ const CreateStudent = () => {
         id="lastName"
         label="Last Name:"
         type="text"
-        placeholder="Last Name"
         value={formData.lastName}
         onChange={handleChange}
         required
@@ -112,7 +108,6 @@ const CreateStudent = () => {
         id="age"
         label="Age:"
         type="number"
-        placeholder="Age"
         value={formData.age}
         onChange={handleChange}
         required

@@ -6,10 +6,17 @@
   border-radius: 0.6rem;
   font-family: inherit;
   cursor: pointer;
+  color: var(--white-color);
+  background-color: var(--primary-color);
 }
+
+.btn:hover {
+  background-color: var(--primary-dark-color);
+}
+
 .small {
-  padding: 0.4rem 1.6rem;
-  font-size: 1.6rem;
+  padding: 0.6rem 1.6rem;
+  font-size: 1.8rem;
 }
 .medium {
   padding: 1.8rem 2.8rem;

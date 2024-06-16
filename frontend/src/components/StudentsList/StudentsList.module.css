@@ -1,0 +1,14 @@
+.list-wrapper {
+  max-width: 75rem;
+}
+
+.list-wrapper,
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.list {
+  margin: 0 auto;
+}

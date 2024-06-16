@@ -1,0 +1,39 @@
+.card {
+  max-width: 65rem;
+  min-width: 65rem;
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  font-size: 1.8rem;
+  color: var(--grey5-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--grey2-color);
+  border-radius: 0.6rem;
+  box-shadow: 1.5rem 1rem 1.8rem var(--grey2-color);
+}
+
+.card-rows-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.card-rows {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.btn {
+  align-self: flex-end;
+  width: 20%;
+  font-size: 3rem;
+}

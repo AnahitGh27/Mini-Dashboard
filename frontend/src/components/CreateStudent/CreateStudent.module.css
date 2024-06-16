@@ -27,14 +27,3 @@
 .span {
   width: 18%;
 }
-
-.btn {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  margin-top: 4rem;
-}
-
-.btn:hover,
-.btn:focus {
-  background-color: var(--primary-dark-color);
-}
