@@ -1,17 +1,19 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Root";
-import HomePage from "./pages/HomePage";
 import StudentsList from "./pages/StudentsList/StudentsList";
 import EditPage from "./pages/EditPage/EditPage";
+import Edit from "./pages/EditPage/Edit";
+import CreateStudent from "./pages/CreateStudent/CreateStudent";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <CreateStudent /> },
       { path: "students", element: <StudentsList /> },
-      { path: "edit", element: <EditPage /> },
+      { path: "edit", element: <Edit /> },
+      { path: "edit/:id", element: <EditPage /> },
     ],
   },
 ]);

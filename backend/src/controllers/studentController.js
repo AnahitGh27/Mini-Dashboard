@@ -17,8 +17,12 @@ export const createStudent = async (req, res) => {
       city,
     });
 
-    await student.save();
-    res.status(201).json(student);
+    const studentData = await student.save();
+
+    if (!studentData) {
+      return res.status(404).json({ message: "Student not created" });
+    }
+    res.status(201).json({ message: "Student created" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -30,9 +34,54 @@ export const getStudents = async (req, res) => {
       {},
       "_id firstName lastName email createdAt"
     );
+
+    if (!students) {
+      return res.status(404).json({ message: "Students are not found" });
+    }
+
     res.status(200).json(students);
   } catch (error) {
     res.status(404).json({ message: error.message });
+  }
+};
+
+export const getStudentById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const student = await Student.findById(
+      id,
+      "_id firstName lastName email createdAt age country city"
+    );
+
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    res.status(200).json(student);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+export const updateStudent = async (req, res) => {
+  const { id } = req.params;
+  const { email, firstName, lastName, age, country, city, date } = req.body;
+
+  try {
+    const updatedStudent = await Student.findByIdAndUpdate(
+      id,
+      { email, firstName, lastName, age, country, city, date },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedStudent) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    res.status(200).json({ message: "Student updated" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 };
 
@@ -55,6 +104,10 @@ export const searchStudents = async (req, res) => {
       .select("firstName lastName email createdAt")
       .lean()
       .exec();
+
+    if (!students) {
+      return res.status(404).json({ message: " Not found" });
+    }
 
     res.status(200).json(students);
   } catch (error) {

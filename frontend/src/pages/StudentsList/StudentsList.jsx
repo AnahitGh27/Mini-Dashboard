@@ -63,6 +63,7 @@ const StudentsList = () => {
       <div className={classes.list}>
         {studentsList.map((student) => (
           <StudentCard
+            id={student._id}
             firstName={student.firstName}
             lastName={student.lastName}
             email={student.email}

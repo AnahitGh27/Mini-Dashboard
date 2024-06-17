@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
 import classes from "./StudentCard.module.css";
 import Button from "../common/Button/Button";
+import { useNavigate } from "react-router-dom";
 
-const StudentCard = ({ firstName, lastName, email, date }) => {
+const StudentCard = ({ id, firstName, lastName, email, date }) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/edit/${id}`);
+  };
+
   return (
     <div className={classes.card}>
       <div className={classes["card-rows-wrapper"]}>
@@ -23,12 +30,18 @@ const StudentCard = ({ firstName, lastName, email, date }) => {
           <span>{date}</span>
         </div>
       </div>
-      <Button size="small" name="Edit" className={classes.btn} />
+      <Button
+        size="small"
+        name="Edit"
+        className={classes.btn}
+        onClick={handleEditClick}
+      />
     </div>
   );
 };
 
 StudentCard.propTypes = {
+  id: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,

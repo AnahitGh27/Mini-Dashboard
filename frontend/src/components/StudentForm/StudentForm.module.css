@@ -31,5 +31,9 @@
 }
 
 .btn-cancel {
+  background-color: grey !important;
+}
+
+.btn-cancel:hover {
   background-color: var(--grey3-color) !important;
 }

@@ -37,7 +37,7 @@ CustomInput.propTypes = {
   type: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
   children: PropTypes.element,
   onChange: PropTypes.func,

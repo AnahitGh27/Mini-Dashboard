@@ -13,7 +13,7 @@ const Navbar = () => {
                 isActive ? classes.active : undefined
               }
             >
-              Home
+              Create student
             </NavLink>
           </li>
           <li className={classes["list-item"]}>
@@ -28,12 +28,12 @@ const Navbar = () => {
           </li>
           <li className={classes["list-item"]}>
             <NavLink
-              to="edit"
+              to="/edit"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
-              Edit
+              Edit student
             </NavLink>
           </li>
         </ul>

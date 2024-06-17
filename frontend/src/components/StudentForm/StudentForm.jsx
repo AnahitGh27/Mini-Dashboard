@@ -5,11 +5,14 @@ import CustomSelect from "../common/CustomSelect/CustomSelect";
 import { COUNTRIES, CITIES } from "../../utils/constants.js";
 import classes from "./StudentForm.module.css";
 import Button from "../common/Button/Button.jsx";
+import { useNavigate } from "react-router-dom";
 
 const StudentForm = ({ type, initialData, onSubmit }) => {
   const [formData, setFormData] = useState({
     ...initialData,
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -54,7 +57,7 @@ const StudentForm = ({ type, initialData, onSubmit }) => {
         id="password"
         label="Password:"
         type="password"
-        value={formData.password}
+        value={formData.password || ""}
         onChange={handleChange}
         required
       />
@@ -115,6 +118,7 @@ const StudentForm = ({ type, initialData, onSubmit }) => {
             name="Cancel"
             className={`${classes["btn"]} ${classes["btn-cancel"]}`}
             size="medium"
+            onClick={() => navigate("/students")}
           />
           <Button
             name="Edit"
