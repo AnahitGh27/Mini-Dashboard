@@ -4,11 +4,13 @@ import StudentsList from "./pages/StudentsList/StudentsList";
 import EditPage from "./pages/EditPage/EditPage";
 import Edit from "./pages/EditPage/Edit";
 import CreateStudent from "./pages/CreateStudent/CreateStudent";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <Error />,
     children: [
       { index: true, element: <CreateStudent /> },
       { path: "students", element: <StudentsList /> },
