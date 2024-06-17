@@ -3,7 +3,6 @@ import Student from "../models/Student.js";
 
 export const createStudent = async (req, res) => {
   const { email, password, firstName, lastName, age, country, city } = req.body;
-
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
@@ -106,7 +105,7 @@ export const searchStudents = async (req, res) => {
       .exec();
 
     if (!students) {
-      return res.status(404).json({ message: " Not found" });
+      return res.status(404).json({ message: "Not found" });
     }
 
     res.status(200).json(students);
