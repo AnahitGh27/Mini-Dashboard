@@ -24,6 +24,7 @@ cd mini-dashboard
 
 ```bash
 
+npm i
 npm run install:all
 
 ```
