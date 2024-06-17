@@ -1,5 +1,6 @@
 .list-wrapper {
   max-width: 75rem;
+  padding: 3rem 2rem;
 }
 
 .list-wrapper,
@@ -11,4 +12,8 @@
 
 .list {
   margin: 0 auto;
+  max-height: 55rem;
+  overflow-y: scroll;
+  scrollbar-color: var(--grey2-color) var(--grey1-color);
+  scrollbar-width: thin;
 }

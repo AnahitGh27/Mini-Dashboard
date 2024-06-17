@@ -5,7 +5,7 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <main style={{ marginTop: "2rem" }}>
+      <main>
         <Outlet />
       </main>
     </>

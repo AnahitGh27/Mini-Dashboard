@@ -1,10 +1,10 @@
 import axios from "axios";
-import StudentCard from "../StudentCard/StudentCard";
+import StudentCard from "../../components/StudentCard/StudentCard";
 import classes from "./StudentsList.module.css";
 import { useEffect, useState } from "react";
 import getReadableDate from "../../utils/getReadableDate";
-import CustomInput from "../common/CustomInput/CustomInput";
-import Button from "../common/Button/Button";
+import CustomInput from "../../components/common/CustomInput/CustomInput";
+import Button from "../../components/common/Button/Button";
 
 const StudentsList = () => {
   const [studentsList, setStudentsList] = useState([]);

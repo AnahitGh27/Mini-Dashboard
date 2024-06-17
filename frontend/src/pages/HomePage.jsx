@@ -1,4 +1,4 @@
-import CreateStudent from "../components/CreateStudent/CreateStudent";
+import CreateStudent from "./CreateStudent/CreateStudent";
 
 const HomePage = () => {
   return <CreateStudent />;

@@ -1,28 +1,18 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
-import axios from "axios";
 import CustomInput from "../common/CustomInput/CustomInput";
 import CustomSelect from "../common/CustomSelect/CustomSelect";
 import { COUNTRIES, CITIES } from "../../utils/constants.js";
-import classes from "./CreateStudent.module.css";
+import classes from "./StudentForm.module.css";
 import Button from "../common/Button/Button.jsx";
 
-const CreateStudent = () => {
-  const initialCountry = COUNTRIES[0];
-  const initialCity = CITIES[initialCountry][0];
-
+const StudentForm = ({ type, initialData, onSubmit }) => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    age: "",
-    country: initialCountry,
-    city: initialCity,
-    date: "",
+    ...initialData,
   });
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
+  const handleChange = (event) => {
+    const { id, value } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [id]: value,
@@ -45,33 +35,13 @@ const CreateStudent = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/students`,
-        formData
-      );
-      console.log("Student created:", response.data);
-      setFormData({
-        email: "",
-        password: "",
-        firstName: "",
-        lastName: "",
-        age: "",
-        country: initialCountry,
-        city: initialCity,
-        date: "",
-      });
-      //TODO redirect to student list page
-    } catch (error) {
-      console.error("Error creating student:", error.response.data);
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(formData);
   };
 
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
-      <h2 className={classes.title}>Create Student</h2>
       <CustomInput
         id="email"
         label="Email:"
@@ -132,14 +102,45 @@ const CreateStudent = () => {
           width="83%"
         />
       </div>
-      <Button
-        name="Create"
-        type="submit"
-        className={classes["btn"]}
-        size="medium"
-      />
+      {type === "create" ? (
+        <Button
+          name="Create"
+          type="submit"
+          className={classes["btn"]}
+          size="medium"
+        />
+      ) : (
+        <div className={classes["buttons-wrapper"]}>
+          <Button
+            name="Cancel"
+            className={`${classes["btn"]} ${classes["btn-cancel"]}`}
+            size="medium"
+          />
+          <Button
+            name="Edit"
+            type="submit"
+            className={classes["btn"]}
+            size="medium"
+          />
+        </div>
+      )}
     </form>
   );
 };
 
-export default CreateStudent;
+StudentForm.propTypes = {
+  type: PropTypes.string,
+  initialData: PropTypes.shape({
+    email: PropTypes.string,
+    password: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    country: PropTypes.string,
+    city: PropTypes.string,
+    date: PropTypes.string,
+  }),
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default StudentForm;
